@@ -43,13 +43,9 @@ export default function MenuPage({ onBackToHome, onSelectCategory }) {
 
         {/* Center Title */}
         <div className="text-center">
-          <h1 className="text-xs font-bold tracking-widest text-white flex items-center justify-center gap-1.5 font-sans">
-            <span>AMAIA'S</span>
-            <span className="text-amber-400 font-serif italic text-xs">MENU</span>
+          <h1 className="text-sm font-extrabold tracking-widest text-white font-sans">
+            AMAIA'S
           </h1>
-          <p className="text-[9px] text-purple-300/70 uppercase tracking-[0.2em] font-mono mt-0.5">
-            9 Curated Categories
-          </p>
         </div>
 
         {/* Brand Logo — gold shimmer on its own lines */}

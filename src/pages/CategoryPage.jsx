@@ -43,15 +43,18 @@ export default function CategoryPage({ categoryId, onBackToCategories }) {
 
         {/* Center Brand */}
         <div className="text-center">
-          <div className="text-xs font-bold tracking-widest text-white flex items-center justify-center gap-1.5 font-sans">
-            <span>AMAIA'S</span>
-            <span className="text-amber-400 font-serif italic text-xs">MENU</span>
+          <div className="text-sm font-extrabold tracking-widest text-white font-sans">
+            AMAIA'S
           </div>
         </div>
 
-        {/* Brand Mini Emblem */}
-        <div className="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-400/30 flex items-center justify-center p-1 shadow-inner">
-          <img src="/logo-emblem.png" alt="Emblem" className="w-full h-full object-contain filter drop-shadow-[0_0_6px_rgba(251,191,36,0.6)]" />
+        {/* Brand Logo — gold shimmer on its own lines */}
+        <div className="relative w-16 h-16 flex items-center justify-center">
+          <img
+            src="/logo-emblem.png"
+            alt="Emblem"
+            className="logo-gold-shimmer w-full h-full object-contain"
+          />
         </div>
       </header>
 
