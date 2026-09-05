@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #06040d;
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 60%),
+      radial-gradient(circle at 100% 40%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 0% 70%, rgba(124, 58, 237, 0.08) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* Cosmic Grid overlay like the reference portfolio */
+.cosmic-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(168, 85, 247, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+  background: rgba(16, 11, 36, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(192, 132, 252, 0.4);
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.2);
+}
+
+/* Pill badge styling matching reference */
+.pill-badge {
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #06040d;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.3);
+  border-radius: 9999px;
+}
+
+/* Premium Card Specular Shine on Hover */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 65%
+  );
+  transform: rotate(25deg) translateY(-100%);
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.card-shine:hover::after {
+  transform: rotate(25deg) translateY(100%);
+}
+
+/* Button Glow Pulse */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(168, 85, 247, 0.6);
+  }
+}
+.animate-glow-pulse {
+  animation: glow-pulse 3s infinite;
+}
+
+/* Floating Elevation Animation */
+@keyframes photo-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+.animate-photo-float {
+  animation: photo-float 6s ease-in-out infinite;
+}
+
+/* Slow Cinematic Ken Burns Zoom */
+@keyframes photo-zoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.045);
+  }
+}
+.animate-photo-zoom {
+  animation: photo-zoom 14s ease-in-out infinite;
+}
+
+/* Luxury Light Beam Sweeping Across Glass */
+@keyframes lens-sweep {
+  0%, 65% {
+    transform: translateX(-160%) rotate(25deg);
+    opacity: 0;
+  }
+  75% {
+    opacity: 0.28;
+  }
+  90% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateX(260%) rotate(25deg);
+    opacity: 0;
+  }
+}
+.animate-lens-sweep {
+  animation: lens-sweep 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Slow Orbital Rotation */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 28s linear infinite;
+}
+
+@keyframes spin-slow-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+.animate-spin-slow-reverse {
+  animation: spin-slow-reverse 36s linear infinite;
+}
+
+/* Button Luxury Shimmer Sweep */
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-160%) skewX(-20deg); }
+  35%, 100% { transform: translateX(260%) skewX(-20deg); }
+}
+.animate-shimmer-sweep {
+  animation: shimmer-sweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+
+
