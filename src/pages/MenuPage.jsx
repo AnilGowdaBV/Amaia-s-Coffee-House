@@ -52,9 +52,17 @@ export default function MenuPage({ onBackToHome, onSelectCategory }) {
           </p>
         </div>
 
-        {/* Brand Mini Emblem */}
-        <div className="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-400/30 flex items-center justify-center p-1 shadow-inner">
-          <img src="/logo-emblem.png" alt="Emblem" className="w-full h-full object-contain filter drop-shadow-[0_0_6px_rgba(251,191,36,0.6)]" />
+        {/* Brand Logo — plain, big, with animated gold shimmer */}
+        <div className="relative w-16 h-16 flex items-center justify-center">
+          <img
+            src="/logo-emblem.png"
+            alt="Emblem"
+            className="w-full h-full object-contain filter drop-shadow-[0_0_12px_rgba(251,191,36,0.85)]"
+          />
+          {/* Animated gold sweep line */}
+          <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none">
+            <div className="absolute top-0 left-[-60%] w-1/3 h-full bg-gradient-to-r from-transparent via-amber-300/60 to-transparent skew-x-[-20deg] animate-gold-sweep" />
+          </div>
         </div>
       </header>
 

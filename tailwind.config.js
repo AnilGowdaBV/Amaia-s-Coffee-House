@@ -36,12 +36,17 @@ export default {
       animation: {
         'pulse-subtle': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',
+        'gold-sweep': 'goldSweep 2s ease-in-out infinite',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-6px)' },
-        }
+        },
+        goldSweep: {
+          '0%': { left: '-60%' },
+          '100%': { left: '160%' },
+        },
       }
     },
   },

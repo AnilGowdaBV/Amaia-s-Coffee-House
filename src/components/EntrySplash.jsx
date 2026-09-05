@@ -37,33 +37,33 @@ export default function EntrySplash({ onFinish }) {
       <div className="absolute w-[350px] h-[350px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse pointer-events-none"></div>
       <div className="absolute w-[200px] h-[200px] bg-amber-500/15 rounded-full blur-[90px] pointer-events-none"></div>
 
-      {/* Skip Button on Top Right */}
-      <button 
-        onClick={onFinish}
-        className="absolute top-6 right-6 px-3.5 py-1.5 rounded-full bg-purple-950/40 border border-purple-500/30 text-xs font-medium text-purple-300/80 hover:text-white hover:border-purple-400 transition active:scale-95"
-      >
-        Skip ➔
-      </button>
-
       {/* Main Animated Center Hub */}
       <div className="relative flex flex-col items-center z-10 px-6 text-center">
         
         {/* Pulsing Concentric Aura Wave */}
         <div className="relative mb-6 flex items-center justify-center">
-          <div className="absolute w-28 h-28 rounded-full border border-purple-500/30 animate-ping opacity-30" style={{ animationDuration: '2.5s' }}></div>
-          <div className="absolute w-36 h-36 rounded-full border border-dashed border-amber-500/20 animate-spin-slow"></div>
-          
-          {/* Central Illuminated Emblem Card */}
-          <div 
-            className={`w-20 h-20 rounded-3xl bg-gradient-to-br from-amber-500/20 via-purple-950/60 to-purple-900/40 border border-amber-400/50 flex items-center justify-center p-3.5 shadow-[0_0_45px_rgba(245,158,11,0.35)] transition-all duration-700 ease-out ${
+          {/* Outer ping ring */}
+          <div className="absolute w-36 h-36 rounded-full border border-amber-400/20 animate-ping opacity-20" style={{ animationDuration: '2.5s' }}></div>
+          {/* Rotating dashed ring */}
+          <div className="absolute w-44 h-44 rounded-full border border-dashed border-amber-500/15 animate-spin" style={{ animationDuration: '8s' }}></div>
+          {/* Second glow ring */}
+          <div className="absolute w-28 h-28 rounded-full border border-purple-500/25 animate-ping opacity-20" style={{ animationDuration: '3.5s' }}></div>
+
+          {/* Plain Logo — no card, just the emblem with gold glow */}
+          <div
+            className={`relative w-28 h-28 transition-all duration-700 ease-out ${
               phase >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
             }`}
           >
-            <img 
-              src="/logo-emblem.png" 
-              alt="Amaia's" 
-              className="w-full h-full object-contain filter drop-shadow-[0_0_12px_rgba(251,191,36,0.9)]"
+            <img
+              src="/logo-emblem.png"
+              alt="Amaia's"
+              className="w-full h-full object-contain filter drop-shadow-[0_0_30px_rgba(251,191,36,1)] drop-shadow-[0_0_60px_rgba(251,191,36,0.5)]"
             />
+            {/* Animated gold sweep line */}
+            <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none">
+              <div className="absolute top-0 left-[-60%] w-1/3 h-full bg-gradient-to-r from-transparent via-amber-200/70 to-transparent skew-x-[-20deg] animate-gold-sweep" />
+            </div>
           </div>
         </div>
 

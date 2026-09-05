@@ -89,16 +89,8 @@ export default function LandingPage({ onExploreMenu, onReplayIntro }) {
       </div>
 
       {/* 7. Footer */}
-      <footer className="mt-8 text-center text-[10px] text-purple-300/40 tracking-wider space-y-1.5">
+      <footer className="mt-8 text-center text-[10px] text-purple-300/40 tracking-wider">
         <p>© {new Date().getFullYear()} {CAFE_INFO.name} {CAFE_INFO.subname}. ALL RIGHTS RESERVED.</p>
-        {onReplayIntro && (
-          <button 
-            onClick={onReplayIntro} 
-            className="text-[10px] text-purple-400/50 hover:text-purple-300 underline transition cursor-pointer"
-          >
-            Replay QR Entry Animation ✦
-          </button>
-        )}
       </footer>
     </div>
   );
