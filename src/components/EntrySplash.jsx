@@ -40,32 +40,21 @@ export default function EntrySplash({ onFinish }) {
       {/* Main Animated Center Hub */}
       <div className="relative flex flex-col items-center z-10 px-6 text-center">
         
-        {/* Pulsing Concentric Aura Wave */}
+        {/* Logo with gold shimmer on its own lines */}
         <div className="relative mb-6 flex items-center justify-center">
-          {/* Outer ping ring */}
-          <div className="absolute w-36 h-36 rounded-full border border-amber-400/20 animate-ping opacity-20" style={{ animationDuration: '2.5s' }}></div>
-          {/* Rotating dashed ring */}
-          <div className="absolute w-44 h-44 rounded-full border border-dashed border-amber-500/15 animate-spin" style={{ animationDuration: '8s' }}></div>
-          {/* Second glow ring */}
-          <div className="absolute w-28 h-28 rounded-full border border-purple-500/25 animate-ping opacity-20" style={{ animationDuration: '3.5s' }}></div>
-
-          {/* Plain Logo — no card, just the emblem with gold glow */}
           <div
-            className={`relative w-28 h-28 transition-all duration-700 ease-out ${
+            className={`relative w-32 h-32 transition-all duration-700 ease-out ${
               phase >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
             }`}
           >
             <img
               src="/logo-emblem.png"
               alt="Amaia's"
-              className="w-full h-full object-contain filter drop-shadow-[0_0_30px_rgba(251,191,36,1)] drop-shadow-[0_0_60px_rgba(251,191,36,0.5)]"
+              className="logo-gold-shimmer w-full h-full object-contain"
             />
-            {/* Animated gold sweep line */}
-            <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none">
-              <div className="absolute top-0 left-[-60%] w-1/3 h-full bg-gradient-to-r from-transparent via-amber-200/70 to-transparent skew-x-[-20deg] animate-gold-sweep" />
-            </div>
           </div>
         </div>
+
 
         {/* Brand Reveal Typography */}
         <div 

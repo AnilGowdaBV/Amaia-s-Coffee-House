@@ -163,7 +163,26 @@
 }
 .animate-shimmer-sweep {
   animation: shimmer-sweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}/* Logo Gold Lines Shimmer — turns logo's own white lines into animated gold */
+@keyframes logoGoldShimmer {
+  0% {
+    filter: sepia(1) saturate(5) hue-rotate(5deg) brightness(1.2)
+            drop-shadow(0 0 8px rgba(251,191,36,0.7));
+  }
+  40% {
+    filter: sepia(1) saturate(10) hue-rotate(2deg) brightness(2)
+            drop-shadow(0 0 22px rgba(251,191,36,1));
+  }
+  60% {
+    filter: sepia(1) saturate(8) hue-rotate(8deg) brightness(1.6)
+            drop-shadow(0 0 16px rgba(251,191,36,0.85));
+  }
+  100% {
+    filter: sepia(1) saturate(5) hue-rotate(5deg) brightness(1.2)
+            drop-shadow(0 0 8px rgba(251,191,36,0.7));
+  }
 }
-
-
+.logo-gold-shimmer {
+  animation: logoGoldShimmer 2s ease-in-out infinite;
+}
 
