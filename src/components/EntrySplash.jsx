@@ -40,18 +40,97 @@ export default function EntrySplash({ onFinish }) {
       {/* Main Animated Center Hub */}
       <div className="relative flex flex-col items-center z-10 px-6 text-center">
         
-        {/* Logo with gold shimmer on its own lines */}
+        {/* Ultra-Crisp Vector Logo with Glowing Neon Gold Sign Lines */}
         <div className="relative mb-6 flex items-center justify-center">
           <div
-            className={`relative w-32 h-32 transition-all duration-700 ease-out ${
+            className={`relative w-36 h-36 flex items-center justify-center transition-all duration-700 ease-out ${
               phase >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
             }`}
           >
-            <img
-              src="/logo-emblem.png"
-              alt="Amaia's"
-              className="logo-gold-shimmer w-full h-full object-contain"
-            />
+            {/* Ambient Warm Golden Halo Glow */}
+            <div className="absolute w-28 h-28 bg-amber-500/25 rounded-full blur-2xl pointer-events-none animate-pulse"></div>
+
+            {/* Razor-sharp Vector SVG of Amaia's 3-leaf signature neon emblem */}
+            <svg viewBox="0 0 240 240" className="w-full h-full overflow-visible drop-shadow-[0_0_20px_rgba(245,158,11,0.7)]">
+              <defs>
+                <linearGradient id="splashNeonGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#fffbeb" />
+                  <stop offset="25%" stopColor="#fef08a" />
+                  <stop offset="55%" stopColor="#f59e0b" />
+                  <stop offset="85%" stopColor="#d97706" />
+                  <stop offset="100%" stopColor="#fbbf24" />
+                </linearGradient>
+
+                <filter id="splashGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="4" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              {/* Soft ambient back-trace */}
+              <g opacity="0.6" filter="url(#splashGlow)">
+                {/* Top Leaf */}
+                <path
+                  d="M 120 38 C 146 38, 166 60, 166 88 C 166 118, 142 138, 120 152 C 98 138, 74 118, 74 88 C 74 60, 94 38, 120 38 Z"
+                  fill="none"
+                  stroke="#f59e0b"
+                  strokeWidth="14"
+                  strokeLinecap="round"
+                />
+                {/* Bottom Left Leaf */}
+                <path
+                  d="M 72 192 C 48 178, 40 150, 56 124 C 74 96, 104 110, 126 126 C 118 148, 100 180, 78 192 Z"
+                  fill="none"
+                  stroke="#f59e0b"
+                  strokeWidth="14"
+                  strokeLinecap="round"
+                />
+                {/* Bottom Right Leaf */}
+                <path
+                  d="M 168 192 C 192 178, 200 150, 184 124 C 166 96, 136 110, 114 126 C 122 148, 140 180, 162 192 Z"
+                  fill="none"
+                  stroke="#f59e0b"
+                  strokeWidth="14"
+                  strokeLinecap="round"
+                />
+              </g>
+
+              {/* Razor Sharp Crisp Gold Neon Lines */}
+              <g>
+                {/* Top Leaf */}
+                <path
+                  d="M 120 38 C 146 38, 166 60, 166 88 C 166 118, 142 138, 120 152 C 98 138, 74 118, 74 88 C 74 60, 94 38, 120 38 Z"
+                  fill="none"
+                  stroke="url(#splashNeonGold)"
+                  strokeWidth="8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                {/* Bottom Left Leaf */}
+                <path
+                  d="M 72 192 C 48 178, 40 150, 56 124 C 74 96, 104 110, 126 126 C 118 148, 100 180, 78 192 Z"
+                  fill="none"
+                  stroke="url(#splashNeonGold)"
+                  strokeWidth="8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                {/* Bottom Right Leaf */}
+                <path
+                  d="M 168 192 C 192 178, 200 150, 184 124 C 166 96, 136 110, 114 126 C 122 148, 140 180, 162 192 Z"
+                  fill="none"
+                  stroke="url(#splashNeonGold)"
+                  strokeWidth="8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                {/* Center Core Light Pip */}
+                <circle cx="120" cy="132" r="5" fill="#fffbeb" className="animate-pulse" />
+              </g>
+            </svg>
           </div>
         </div>
 
