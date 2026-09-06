@@ -116,7 +116,7 @@ export default function MenuPage({ onBackToHome, onSelectCategory }) {
                     src={cat.image} 
                     alt={cat.title} 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                    loading="lazy" 
+                    loading="eager" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-50" />
                   <div className="absolute bottom-1 right-1 w-5 h-5 rounded-md bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center">
@@ -146,7 +146,6 @@ export default function MenuPage({ onBackToHome, onSelectCategory }) {
                   src={cat.image} 
                   alt={cat.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
 

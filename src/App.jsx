@@ -1,18 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import LandingPage from './pages/LandingPage';
 import MenuPage from './pages/MenuPage';
 import CategoryPage from './pages/CategoryPage';
 import CosmicBackground from './components/CosmicBackground';
 import EntrySplash from './components/EntrySplash';
+import { MENU_CATEGORIES } from './data/menuData';
 
 export default function App() {
   const [currentView, setCurrentView] = useState('landing'); // 'landing' | 'menu' | 'category'
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [imagesPreloaded, setImagesPreloaded] = useState(false);
   const [showSplash, setShowSplash] = useState(() => {
-    // Only show for the first time in session (e.g. when QR code is scanned)
     return !sessionStorage.getItem('amaias_qr_intro_seen');
   });
+
+  // Preload ALL category images silently in the background as soon as app loads
+  useEffect(() => {
+    const imageUrls = MENU_CATEGORIES.map(cat => cat.image);
+    let loaded = 0;
+    imageUrls.forEach(url => {
+      const img = new Image();
+      img.onload = img.onerror = () => {
+        loaded++;
+        if (loaded >= imageUrls.length) {
+          setImagesPreloaded(true);
+        }
+      };
+      img.src = url;
+    });
+  }, []);
 
   const handleSplashFinish = () => {
     sessionStorage.setItem('amaias_qr_intro_seen', 'true');
@@ -23,14 +40,33 @@ export default function App() {
     setShowSplash(true);
   };
 
-  const navigateWithSpinner = (view, delay = 1200) => {
+  const navigateWithSpinner = useCallback((view, delay = 600) => {
     setIsLoading(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    setTimeout(() => {
-      setCurrentView(view);
-      setIsLoading(false);
-    }, delay);
-  };
+
+    // If images are already preloaded, just show spinner briefly for smooth transition feel
+    if (imagesPreloaded) {
+      setTimeout(() => {
+        setCurrentView(view);
+        setIsLoading(false);
+      }, delay);
+    } else {
+      // Wait for images to preload (max 4 seconds fallback)
+      const checkInterval = setInterval(() => {
+        if (imagesPreloaded) {
+          clearInterval(checkInterval);
+          setCurrentView(view);
+          setIsLoading(false);
+        }
+      }, 200);
+      // Fallback: don't wait forever
+      setTimeout(() => {
+        clearInterval(checkInterval);
+        setCurrentView(view);
+        setIsLoading(false);
+      }, 4000);
+    }
+  }, [imagesPreloaded]);
 
   const navigateTo = (view) => {
     setCurrentView(view);
@@ -39,7 +75,7 @@ export default function App() {
 
   const handleSelectCategory = (categoryId) => {
     setSelectedCategoryId(categoryId);
-    navigateWithSpinner('category', 800);
+    navigateWithSpinner('category', 500);
   };
 
   return (
@@ -78,12 +114,12 @@ export default function App() {
         {/* View 1: Landing Page */}
         {currentView === 'landing' && (
           <LandingPage 
-            onExploreMenu={() => navigateWithSpinner('menu', 1200)} 
+            onExploreMenu={() => navigateWithSpinner('menu', 600)} 
             onReplayIntro={handleReplayIntro}
           />
         )}
 
-        {/* View 2: The 9 Category Cards Overview (Tap card to open dedicated page) */}
+        {/* View 2: The 9 Category Cards Overview */}
         {currentView === 'menu' && (
           <MenuPage 
             onBackToHome={() => navigateTo('landing')}
@@ -91,7 +127,7 @@ export default function App() {
           />
         )}
 
-        {/* View 3: Dedicated Category Page for Selected Domain */}
+        {/* View 3: Dedicated Category Page */}
         {currentView === 'category' && (
           <CategoryPage 
             categoryId={selectedCategoryId}
